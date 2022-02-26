@@ -24,20 +24,16 @@ namespace BlazorTemplate.Services
         private HttpClient _httpClient;
         private NavigationManager _navigationManager;
         private ILocalStorageService _localStorageService;
-        private IConfiguration _configuration;
 
         public HttpService(
-            IHttpClientFactory httpClientFactory,
             NavigationManager navigationManager,
-            ILocalStorageService localStorageService,
-            IConfiguration configuration
+            ILocalStorageService localStorageService
         ) {
             //_httpClient = httpClientFactory.CreateClient("backend");
             _httpClient = new HttpClient(new FakeBackendHandler(localStorageService));
             _httpClient.BaseAddress = new Uri("http://localhost");
             _navigationManager = navigationManager;
             _localStorageService = localStorageService;
-            _configuration = configuration;
         }
 
         public async Task<T> Get<T>(string uri)
