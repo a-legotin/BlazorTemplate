@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTemplate", "BlazorTemplate\BlazorTemplate\BlazorTemplate.csproj", "{83B2CCC9-522D-489B-BCC0-71A35F773FEC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "environment", "environment", "{F410E342-2751-4AEE-911C-AB45B8237F04}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
+		..\.gitlab-ci.yml = ..\.gitlab-ci.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

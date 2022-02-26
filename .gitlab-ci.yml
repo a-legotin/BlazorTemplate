@@ -1,0 +1,15 @@
+image: mcr.microsoft.com/dotnet/sdk:6.0
+
+stages:
+  - build_core
+
+before_script:
+  - apt update -y -q
+
+build_core:
+  stage: build_core
+  tags:
+    - k8s
+  script:
+    - dotnet restore src/BlazorTemplate.sln --locked-mode
+    - dotnet build src/BlazorTemplate.sln -c Release --no-restore
