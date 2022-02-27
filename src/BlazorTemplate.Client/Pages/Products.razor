@@ -1,0 +1,24 @@
+﻿@page "/products"
+@using BlazorProducts.Client.Components.ProductTable
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<div class="row">
+    <div class="col-md-5">
+        <Search OnSearchChanged="SearchChanged"/>
+    </div>
+    <div class="col-md-5">
+        <Sort OnSortChanged="SortChanged" />
+    </div>
+    <div class="col-md-2">
+        <a href="/createProduct">Create Product</a>
+    </div>
+</div>
+<div class="row">
+    <ProductTable Products="ProductList" OnDeleted="DeleteProduct" />
+</div>
+<div class="row">
+    <div class="col">
+        <Pagination MetaData="MetaData" Spread="2" SelectedPage="SelectedPage" />
+    </div>
+</div>
