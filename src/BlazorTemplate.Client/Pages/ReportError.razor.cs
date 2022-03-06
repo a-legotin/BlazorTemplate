@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace BlazorProducts.Client.Pages
+namespace BlazorTemplate.Client.Pages;
+
+public partial class ReportError
 {
-	public partial class ReportError
-	{
-		[Parameter]
-		public int ErrorCode { get; set; }
-		[Parameter]
-		public string ErrorDescription { get; set; }
-	}
+	[Parameter]
+	public int ErrorCode { get; set; }
+	[Parameter]
+	public string ErrorDescription { get; set; }
 }

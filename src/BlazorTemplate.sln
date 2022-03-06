@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTemplate.Api", "Blazo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTemplate.Classes", "BlazorTemplate.Classes\BlazorTemplate.Classes.csproj", "{B2F0877F-F363-4FAC-B99A-08226BA34ED1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorProducts.Client", "BlazorTemplate.Client\BlazorProducts.Client.csproj", "{0B46F31B-30EF-48D3-A554-CAEC5DB120EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTemplate.Client", "BlazorTemplate.Client\BlazorTemplate.Client.csproj", "{0B46F31B-30EF-48D3-A554-CAEC5DB120EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

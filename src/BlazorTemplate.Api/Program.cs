@@ -1,4 +1,3 @@
-using System.Configuration;
 using System.Text;
 using BlazorTemplate.Api.Context;
 using BlazorTemplate.Api.Repository;
@@ -22,12 +21,12 @@ builder.Services.AddCors(policy =>
         .WithExposedHeaders("X-Pagination"));
 });
 
-builder.Services.AddDbContext<ProductContext>(opt => opt.UseSqlite(builder.Configuration.GetConnectionString("sqlConnection")));
+builder.Services.AddDbContext<CustomerContext>(opt => opt.UseSqlite(builder.Configuration.GetConnectionString("sqlConnection")));
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<ProductContext>();
+    .AddEntityFrameworkStores<CustomerContext>();
 
 var jwtSettings = builder.Configuration.GetSection("JwtSettings"); 
 builder.Services.AddAuthentication(opt => 
@@ -57,11 +56,6 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
 app.UseStaticFiles();
-app.UseStaticFiles(new StaticFileOptions()
-{
-    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"StaticFiles")),
-    RequestPath = new PathString("/StaticFiles")
-});
 
 app.UseRouting();
 

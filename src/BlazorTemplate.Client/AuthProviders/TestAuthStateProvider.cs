@@ -1,22 +1,21 @@
-﻿using Microsoft.AspNetCore.Components.Authorization;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Authorization;
 
-namespace BlazorProducts.Client.AuthProviders
+namespace BlazorTemplate.Client.AuthProviders;
+
+public class TestAuthStateProvider : AuthenticationStateProvider
 {
-    public class TestAuthStateProvider : AuthenticationStateProvider
-    {
-        public async override Task<AuthenticationState> GetAuthenticationStateAsync()
-        {
-			await Task.Delay(1500);
-			var claims = new List<Claim>
-			{
-				new Claim(ClaimTypes.Name, "John Doe"),
-				new Claim(ClaimTypes.Role, "Administrator")
-			};
-			var anonymous = new ClaimsIdentity();
-            return await Task.FromResult(new AuthenticationState(new ClaimsPrincipal(anonymous)));
-        }
-    }
+	public override async Task<AuthenticationState> GetAuthenticationStateAsync()
+	{
+		await Task.Delay(1500);
+		var claims = new List<Claim>
+		{
+			new Claim(ClaimTypes.Name, "John Doe"),
+			new Claim(ClaimTypes.Role, "Administrator")
+		};
+		var anonymous = new ClaimsIdentity();
+		return await Task.FromResult(new AuthenticationState(new ClaimsPrincipal(anonymous)));
+	}
 }

@@ -1,21 +1,20 @@
-﻿using BlazorProducts.Client.HttpRepository;
+﻿using System.Threading.Tasks;
+using BlazorTemplate.Client.HttpRepository;
 using Microsoft.AspNetCore.Components;
-using System.Threading.Tasks;
 
-namespace BlazorProducts.Client.Pages
+namespace BlazorTemplate.Client.Pages;
+
+public partial class Logout
 {
-    public partial class Logout
+
+    [Inject]
+    public IAuthenticationService AuthenticationService { get; set; }
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+
+    protected override async Task OnInitializedAsync()
     {
-
-        [Inject]
-        public IAuthenticationService AuthenticationService { get; set; }
-        [Inject]
-        public NavigationManager NavigationManager { get; set; }
-
-        protected override async Task OnInitializedAsync()
-        {
-            await AuthenticationService.Logout();
-            NavigationManager.NavigateTo("/");
-        }
+        await AuthenticationService.Logout();
+        NavigationManager.NavigateTo("/");
     }
 }

@@ -1,16 +1,17 @@
 ﻿@page "/counter"
 @using System.Security.Claims
 
+<CounterPrint CurrentCount="currentCount" Title="Counter" />
+<br/>
 <AuthorizeView>
     <Authorized>
-        The user: @context.User.FindFirst(ClaimTypes.Name).Value is authorized
+        <div>The user: @context.User.FindFirst(ClaimTypes.Name).Value is authorized</div>
     </Authorized>
     <NotAuthorized>
-        The User is not authorized
+        <div>The User is not authorized</div>
     </NotAuthorized>
 </AuthorizeView>
-
-<CounterPrint CurrentCount="currentCount" Title="Counter" />
+<br/>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
