@@ -1,6 +1,6 @@
 ﻿using BlazorTemplate.Classes.Models;
 
-namespace BlazorTemplate.Api.Repository;
+namespace BlazorTemplate.Api.Abstractions;
 
 public interface ICustomerRepository
 {

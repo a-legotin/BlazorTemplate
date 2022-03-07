@@ -1,30 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using BlazorTemplate.Classes.Models;
-using BlazorTemplate.Classes.RequestFeatures;
-using BlazorTemplate.Client.Features;
-using Microsoft.AspNetCore.WebUtilities;
+using BlazorTemplate.Client.Abstractions;
 
 namespace BlazorTemplate.Client.HttpRepository;
 
-public class ProductHttpRepository : IProductHttpRepository
+public class CustomerHttpRepository : ICustomerHttpRepository
 {
     private readonly HttpClient _client;
     private readonly JsonSerializerOptions _options;
 
-    public ProductHttpRepository(HttpClient client)
+    public CustomerHttpRepository(HttpClient client)
     {
         _client = client;
         _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
     }
 
-    public async Task<IEnumerable<Customer>> GetProducts()
+    public async Task<IEnumerable<Customer>> GetCustomers()
     {
         var response = await _client.GetAsync("customers");
         var content = await response.Content.ReadAsStringAsync();

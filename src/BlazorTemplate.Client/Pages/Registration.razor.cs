@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BlazorTemplate.Classes.DTO;
+using BlazorTemplate.Client.Abstractions;
 using BlazorTemplate.Client.HttpRepository;
 using Microsoft.AspNetCore.Components;
 

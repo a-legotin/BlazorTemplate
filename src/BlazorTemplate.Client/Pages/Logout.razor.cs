@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using BlazorTemplate.Client.Abstractions;
 using BlazorTemplate.Client.HttpRepository;
 using Microsoft.AspNetCore.Components;
 

@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using BlazorTemplate.Classes.DTO;
+using BlazorTemplate.Client.Abstractions;
 using BlazorTemplate.Client.AuthProviders;
 using Microsoft.AspNetCore.Components.Authorization;
 

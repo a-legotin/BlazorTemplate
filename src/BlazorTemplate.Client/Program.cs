@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
+using BlazorTemplate.Client.Abstractions;
 using BlazorTemplate.Client.AuthProviders;
 using BlazorTemplate.Client.HttpRepository;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -18,7 +19,7 @@ public class Program
 		builder.RootComponents.Add<App>("#app");
 
 		builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5010/api/") });
-		builder.Services.AddScoped<IProductHttpRepository, ProductHttpRepository>();
+		builder.Services.AddScoped<ICustomerHttpRepository, CustomerHttpRepository>();
 		builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 		builder.Services.AddBlazoredLocalStorage(); 
 		builder.Services.AddAuthorizationCore(); 

@@ -1,0 +1,37 @@
+@using BlazorTemplate.Classes.Models
+@if (Customers?.Any() == true)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Customers)
+            {
+                <tr>
+                    <td class="align-middle">
+                        @customer.Name
+                    </td>
+                    <td class="align-middle">
+                        @customer.Email
+                    </td>
+                </tr>
+             }
+            </tbody>
+    </table>
+}
+else
+{
+    <span>
+        Loading customers...
+    </span>
+}
+
+@code {
+    
+    [Parameter]
+    public IEnumerable<Customer> Customers { get; set; }
+}

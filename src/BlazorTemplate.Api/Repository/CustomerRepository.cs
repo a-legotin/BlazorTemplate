@@ -1,4 +1,5 @@
-﻿using BlazorTemplate.Api.Context;
+﻿using BlazorTemplate.Api.Abstractions;
+using BlazorTemplate.Api.Context;
 using BlazorTemplate.Classes.Models;
 using Microsoft.EntityFrameworkCore;
 
