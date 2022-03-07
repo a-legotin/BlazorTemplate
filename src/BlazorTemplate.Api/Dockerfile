@@ -1,13 +1,13 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+﻿FROM  mcr.microsoft.com/dotnet/aspnet:6.0-bullseye-slim AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim AS build
 WORKDIR /src
-COPY ["BlazorTemplate.Api/BlazorTemplate.Api.csproj", "BlazorTemplate.Api/"]
+
+COPY ["src/BlazorTemplate.Api/BlazorTemplate.Api.csproj", "BlazorTemplate.Api/"]
+
 RUN dotnet restore "BlazorTemplate.Api/BlazorTemplate.Api.csproj"
-COPY . .
+COPY src/. .
 WORKDIR "/src/BlazorTemplate.Api"
 RUN dotnet build "BlazorTemplate.Api.csproj" -c Release -o /app/build
 
@@ -17,4 +17,5 @@ RUN dotnet publish "BlazorTemplate.Api.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENV ASPNETCORE_URLS=http://+:8081
 ENTRYPOINT ["dotnet", "BlazorTemplate.Api.dll"]
