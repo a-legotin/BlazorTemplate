@@ -2,6 +2,7 @@ image: mcr.microsoft.com/dotnet/sdk:6.0
 
 stages:
   - build
+  - deploy
 
 variables:
   DOCKER_DRIVER: overlay2
@@ -36,9 +37,3 @@ deploy:
     name: staging
   script:
     - echo "Creating namespace, it might exists already"
-    - kubectl apply -f kl-demo-service-namespace.yaml
-    - kubectl delete secret docker-registry registry-credentials --ignore-not-found --namespace=kl-demo
-    - kubectl create secret docker-registry registry-credentials --docker-server=$CI_REGISTRY --docker-username=$CG_DEPLOY_USR --docker-password=$CG_DEPLOY_PWD --docker-email=$GITLAB_USER_EMAIL --namespace=kl-demo
-    - echo "Deploy to staging environment. You must supply credentials already!"
-    - kubectl apply -f kl-demo-deployment.yaml -f kl-demo-service.yaml -f kl-demo-ingress.yaml --namespace=kl-demo
-    - kubectl rollout restart deployment kldemo-customers-web-deployment --namespace=kl-demo
