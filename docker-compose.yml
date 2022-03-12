@@ -6,25 +6,27 @@ services:
     build:
       context: .
       network: host
-      dockerfile: src/BlazorTemplate.Api/Dockerfile
-    restart: on-failure
-    deploy:
-      replicas: 1
-    networks:
-      - main-network
-  blazor-template-client:
-    image: blazor-template-client
-    build:
-      context: .
-      network: host
-      dockerfile: src/BlazorTemplate.Client/Dockerfile
+      dockerfile: src/BlazorTemplate/Api/Dockerfile
     restart: on-failure
     deploy:
       replicas: 1
     networks:
       - main-network
     ports:
-      - "8080:8080"
+      - "80"
+  blazor-template-web:
+    image: blazor-template-web
+    build:
+      context: .
+      network: host
+      dockerfile: src/BlazorTemplate/Server/Dockerfile
+    restart: on-failure
+    deploy:
+      replicas: 1
+    networks:
+      - main-network
+    ports:
+      - "8080:80"
 
 networks:
   main-network:

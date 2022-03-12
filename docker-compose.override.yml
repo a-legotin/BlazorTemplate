@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  blazor-template-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+  blazor-template-web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development

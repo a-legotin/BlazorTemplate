@@ -1,0 +1,24 @@
+@page "/customers"
+@using Microsoft.AspNetCore.Authorization
+@using BlazorTemplate.Shared.Models
+@using BlazorTemplate.Client.Abstractions
+@using BlazorTemplate.Client.Components.Customers
+@using BlazorTemplate.Client.HttpRepository
+@attribute [Authorize]
+
+<h3>Customers</h3>
+<div class="row">
+    <CustomerList Customers="CustomersList"/>
+</div>
+@code {
+
+    private IEnumerable<Customer> CustomersList { get; set; } 
+    
+    [Inject]
+    public ICustomerHttpRepository CustomerRepo { get; set; }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        CustomersList = await CustomerRepo.GetCustomers();
+    }
+}

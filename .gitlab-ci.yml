@@ -23,14 +23,14 @@ build:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker-compose build
     - docker tag blazor-template-api:latest $CI_REGISTRY_IMAGE/blazor-template-api:$CI_COMMIT_SHA
-    - docker tag blazor-template-client:latest $CI_REGISTRY_IMAGE/blazor-template-client:$CI_COMMIT_SHA
+    - docker tag blazor-template-web:latest $CI_REGISTRY_IMAGE/blazor-template-web:$CI_COMMIT_SHA
     - docker tag blazor-template-api:latest $CI_REGISTRY_IMAGE/blazor-template-api:latest
-    - docker tag blazor-template-client:latest $CI_REGISTRY_IMAGE/blazor-template-client:latest
+    - docker tag blazor-template-web:latest $CI_REGISTRY_IMAGE/blazor-template-web:latest
     - echo "Pushing docker images to registry"
     - docker push $CI_REGISTRY_IMAGE/blazor-template-api:$CI_COMMIT_SHA
-    - docker push $CI_REGISTRY_IMAGE/blazor-template-client:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY_IMAGE/blazor-template-web:$CI_COMMIT_SHA
     - docker push $CI_REGISTRY_IMAGE/blazor-template-api:latest
-    - docker push $CI_REGISTRY_IMAGE/blazor-template-client:latest
+    - docker push $CI_REGISTRY_IMAGE/blazor-template-web:latest
  
 deploy:
   stage: deploy

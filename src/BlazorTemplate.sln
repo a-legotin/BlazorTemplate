@@ -1,17 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "environment", "environment", "{F410E342-2751-4AEE-911C-AB45B8237F04}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTemplate.Server", "BlazorTemplate\Server\BlazorTemplate.Server.csproj", "{AD4ECEA7-939C-4D7A-9621-B5CD57E416DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTemplate.Client", "BlazorTemplate\Client\BlazorTemplate.Client.csproj", "{1D9ADB8D-6798-4C77-AFE8-F4BEDF3CE7A4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTemplate.Shared", "BlazorTemplate\Shared\BlazorTemplate.Shared.csproj", "{35DC2E38-24E8-434D-9189-BAB2706B4383}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "..\docker-compose.dcproj", "{A0C1CA24-3E78-44E2-BB58-21581CF4FA57}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorTemplate.Api", "BlazorTemplate\Api\BlazorTemplate.Api.csproj", "{2E3EF236-E319-46AA-911C-81FE08E1E3C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "environment", "environment", "{470E985C-3C0A-4526-889A-27A155F2B237}"
 	ProjectSection(SolutionItems) = preProject
-		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
 		..\.gitlab-ci.yml = ..\.gitlab-ci.yml
-		..\docker-compose.yml = ..\docker-compose.yml
+		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTemplate.Api", "BlazorTemplate.Api\BlazorTemplate.Api.csproj", "{620B58B5-AA1D-454B-A761-1B441BDB2663}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTemplate.Classes", "BlazorTemplate.Classes\BlazorTemplate.Classes.csproj", "{B2F0877F-F363-4FAC-B99A-08226BA34ED1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTemplate.Client", "BlazorTemplate.Client\BlazorTemplate.Client.csproj", "{0B46F31B-30EF-48D3-A554-CAEC5DB120EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,17 +25,31 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{620B58B5-AA1D-454B-A761-1B441BDB2663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{620B58B5-AA1D-454B-A761-1B441BDB2663}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{620B58B5-AA1D-454B-A761-1B441BDB2663}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{620B58B5-AA1D-454B-A761-1B441BDB2663}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B2F0877F-F363-4FAC-B99A-08226BA34ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2F0877F-F363-4FAC-B99A-08226BA34ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2F0877F-F363-4FAC-B99A-08226BA34ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2F0877F-F363-4FAC-B99A-08226BA34ED1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B46F31B-30EF-48D3-A554-CAEC5DB120EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B46F31B-30EF-48D3-A554-CAEC5DB120EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B46F31B-30EF-48D3-A554-CAEC5DB120EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B46F31B-30EF-48D3-A554-CAEC5DB120EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD4ECEA7-939C-4D7A-9621-B5CD57E416DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD4ECEA7-939C-4D7A-9621-B5CD57E416DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD4ECEA7-939C-4D7A-9621-B5CD57E416DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD4ECEA7-939C-4D7A-9621-B5CD57E416DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D9ADB8D-6798-4C77-AFE8-F4BEDF3CE7A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D9ADB8D-6798-4C77-AFE8-F4BEDF3CE7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D9ADB8D-6798-4C77-AFE8-F4BEDF3CE7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D9ADB8D-6798-4C77-AFE8-F4BEDF3CE7A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35DC2E38-24E8-434D-9189-BAB2706B4383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35DC2E38-24E8-434D-9189-BAB2706B4383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35DC2E38-24E8-434D-9189-BAB2706B4383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35DC2E38-24E8-434D-9189-BAB2706B4383}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0C1CA24-3E78-44E2-BB58-21581CF4FA57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0C1CA24-3E78-44E2-BB58-21581CF4FA57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0C1CA24-3E78-44E2-BB58-21581CF4FA57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0C1CA24-3E78-44E2-BB58-21581CF4FA57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E3EF236-E319-46AA-911C-81FE08E1E3C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E3EF236-E319-46AA-911C-81FE08E1E3C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E3EF236-E319-46AA-911C-81FE08E1E3C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E3EF236-E319-46AA-911C-81FE08E1E3C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1735D974-A37C-4952-B999-1F94F9CDDF20}
 	EndGlobalSection
 EndGlobal
