@@ -22,7 +22,7 @@ spec:
             - containerPort: 80
       imagePullSecrets:
         - name: registry-credentials
-----
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
