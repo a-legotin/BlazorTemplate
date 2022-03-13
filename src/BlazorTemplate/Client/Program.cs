@@ -17,7 +17,6 @@ public class Program
 	{
 		var builder = WebAssemblyHostBuilder.CreateDefault(args);
 		builder.RootComponents.Add<App>("#app");
-
 		builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://blazor.staging.codegarage.ru:8081/api/") });
 		builder.Services.AddScoped<ICustomerHttpRepository, CustomerHttpRepository>();
 		builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();

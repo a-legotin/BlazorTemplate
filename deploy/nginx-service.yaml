@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: blazor-nginx
+  labels:
+    app: blazor-nginx
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+  selector:
+    app: blazor-nginx

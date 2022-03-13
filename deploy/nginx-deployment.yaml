@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blazor-nginx-deployment
+  labels:
+    app: blazor-template-nginx
+spec:
+  selector:
+    matchLabels:
+      app: blazor-template-nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: blazor-template-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: blazor-nginx-config
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+              readOnly: true
+            - name: blazor-nginx-config
+              mountPath: /etc/nginx/proxy.conf
+              subPath: proxy.conf
+              readOnly: true
+      volumes:
+        - name: blazor-nginx-config
+          configMap:
+            name: blazor-nginx-config
+            items:
+              - key: nginx.conf
+                path: nginx.conf
+              - key: proxy.conf
+                path: proxy.conf
