@@ -21,7 +21,7 @@ builder.Services.AddCors(policy =>
         .WithExposedHeaders("X-Pagination"));
 });
 
-builder.Services.AddDbContext<CustomerContext>(opt => opt.UseSqlite(builder.Configuration.GetConnectionString("sqlConnection")));
+builder.Services.AddDbContext<CustomerContext>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("sqlConnection")));
 
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 

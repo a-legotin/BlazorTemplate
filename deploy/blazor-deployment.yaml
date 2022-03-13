@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blazor-template-web-deployment
+  labels:
+    app: blazor-template
+spec:
+  selector:
+    matchLabels:
+      app: blazor-template-web
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: blazor-template-web
+    spec:
+      containers:
+        - name: blazor-template-web
+          image: registry.codegarage.ru/codegarage/blazortemplate/blazor-template-web:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: registry-credentials
+----
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blazor-template-api-deployment
+  labels:
+    app: blazor-template
+spec:
+  selector:
+    matchLabels:
+      app: blazor-template-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: blazor-template-api
+    spec:
+      containers:
+        - name: blazor-template-api
+          image: registry.codegarage.ru/codegarage/blazortemplate/blazor-template-api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: registry-credentials
