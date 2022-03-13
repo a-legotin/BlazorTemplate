@@ -13,7 +13,7 @@ services:
     networks:
       - main-network
     ports:
-      - "80"
+      - "8081:8081"
   blazor-template-web:
     image: blazor-template-web
     build:

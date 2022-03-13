@@ -18,7 +18,7 @@ public class Program
 		var builder = WebAssemblyHostBuilder.CreateDefault(args);
 		builder.RootComponents.Add<App>("#app");
 
-		builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://blazor-template-api/api/") });
+		builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:8081/api/") });
 		builder.Services.AddScoped<ICustomerHttpRepository, CustomerHttpRepository>();
 		builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 		builder.Services.AddBlazoredLocalStorage(); 
