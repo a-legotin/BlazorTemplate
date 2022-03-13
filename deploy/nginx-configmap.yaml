@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: blazor-nginx-config
+  name: blazor-template-nginx-config
 data:
   proxy.conf: |
     proxy_redirect          off;

@@ -28,7 +28,7 @@ kind: Deployment
 metadata:
   name: blazor-template-api-deployment
   labels:
-    app: blazor-template
+    app: blazor-template-api
 spec:
   selector:
     matchLabels:

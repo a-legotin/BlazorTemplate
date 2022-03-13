@@ -21,18 +21,18 @@ spec:
           ports:
             - containerPort: 80
           volumeMounts:
-            - name: blazor-nginx-config
+            - name: blazor-template-nginx-config
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
               readOnly: true
-            - name: blazor-nginx-config
+            - name: blazor-template-nginx-config
               mountPath: /etc/nginx/proxy.conf
               subPath: proxy.conf
               readOnly: true
       volumes:
-        - name: blazor-nginx-config
+        - name: blazor-template-nginx-config
           configMap:
-            name: blazor-nginx-config
+            name: blazor-template-nginx-config
             items:
               - key: nginx.conf
                 path: nginx.conf
