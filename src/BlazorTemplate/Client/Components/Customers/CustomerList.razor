@@ -1,4 +1,14 @@
 @using BlazorTemplate.Shared.Models
+@using System.IO
+@using System.Text
+<div class="d-flex flex-row-reverse">
+    
+    <div class="p-2"><button type="button" class="btn btn-light" @onclick="AddCustomer">Add customer</button></div>
+    <div class="p-2"><InputFile type="button" class="btn btn-light" OnChange="OnInputFileChanged" single /></div>
+
+
+</div>
+
 @if (Customers?.Any() == true)
 {
     <table class="table">
@@ -19,19 +29,31 @@
                         @customer.Email
                     </td>
                 </tr>
-             }
-            </tbody>
+            }
+        </tbody>
     </table>
-}
-else
-{
-    <span>
-        Loading customers...
-    </span>
 }
 
 @code {
-    
+
     [Parameter]
     public IEnumerable<Customer> Customers { get; set; }
+
+
+    private void AddCustomer()
+    {
+    }
+
+
+    private string fileContent = "";
+
+    private async Task OnInputFileChanged(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        long maxsize = 512000;
+        var buffer = new byte[file.Size];
+        await file.OpenReadStream(maxsize).ReadAsync(buffer);
+        fileContent = System.Text.Encoding.UTF8.GetString(buffer);
+        var customers = System.Text.Json.JsonSerializer.Deserialize<CustomerPoco[]>(fileContent);
+    }
 }
