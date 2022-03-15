@@ -4,9 +4,11 @@ using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using BlazorTemplate.Client.Abstractions;
 using BlazorTemplate.Client.AuthProviders;
+using BlazorTemplate.Client.Classes;
 using BlazorTemplate.Client.HttpRepository;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorTemplate.Client;
@@ -17,7 +19,9 @@ public class Program
 	{
 		var builder = WebAssemblyHostBuilder.CreateDefault(args);
 		builder.RootComponents.Add<App>("#app");
-		builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://blazor.staging.codegarage.ru/api/") });
+		var options = new ServerOptions();
+		builder.Configuration.Bind("ServerOptions", options);
+		builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(options.ApiUrl) });
 		builder.Services.AddScoped<ICustomerHttpRepository, CustomerHttpRepository>();
 		builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 		builder.Services.AddBlazoredLocalStorage(); 

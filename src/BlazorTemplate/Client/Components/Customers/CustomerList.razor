@@ -2,34 +2,43 @@
 @using System.IO
 @using System.Text
 <div class="d-flex flex-row-reverse">
-    
-    <div class="p-2"><button type="button" class="btn btn-light" @onclick="AddCustomer">Add customer</button></div>
-    <div class="p-2"><InputFile type="button" class="btn btn-light" OnChange="OnInputFileChanged" single /></div>
-
-
+    <div class="p-2">
+        <button type="button" class="btn btn-light" @onclick="AddCustomer">Add customer</button>
+    </div>
+    <div class="p-2">
+        <InputFile type="button" class="btn btn-light" OnChange="OnInputFileChanged" single/>
+    </div>
 </div>
 
 @if (Customers?.Any() == true)
 {
     <table class="table">
         <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-            </tr>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">IP address</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var customer in Customers)
-            {
-                <tr>
-                    <td class="align-middle">
-                        @customer.Name
-                    </td>
-                    <td class="align-middle">
-                        @customer.Email
-                    </td>
-                </tr>
-            }
+        @foreach (var customer in Customers)
+        {
+            <tr>
+                <td class="align-middle">
+                    @($"{customer.FirstName} {customer.LastName}")
+                </td>
+                <td class="align-middle">
+                    @customer.Email
+                </td>
+                <td class="align-middle">
+                    @customer.MobilePhone
+                </td>
+                <td class="align-middle">
+                    @customer.IpAddress
+                </td>
+            </tr>
+        }
         </tbody>
     </table>
 }
@@ -45,15 +54,15 @@
     }
 
 
-    private string fileContent = "";
+    private string _fileContent = "";
 
     private async Task OnInputFileChanged(InputFileChangeEventArgs e)
     {
         var file = e.File;
-        long maxsize = 512000;
         var buffer = new byte[file.Size];
-        await file.OpenReadStream(maxsize).ReadAsync(buffer);
-        fileContent = System.Text.Encoding.UTF8.GetString(buffer);
-        var customers = System.Text.Json.JsonSerializer.Deserialize<CustomerPoco[]>(fileContent);
+        await file.OpenReadStream().ReadAsync(buffer);
+        _fileContent = Encoding.UTF8.GetString(buffer);
+        Customers = System.Text.Json.JsonSerializer.Deserialize<Customer[]>(_fileContent);
     }
+
 }

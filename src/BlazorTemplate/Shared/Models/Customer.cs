@@ -5,29 +5,19 @@ namespace BlazorTemplate.Shared.Models;
 
 public class Customer
 {
-    public Guid Id { get; set; }
-
-    [Required(ErrorMessage = "Name is required field")]
-    public string? Name { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
 
     [Required(ErrorMessage = "Email is required field")]
+    [JsonPropertyName("email")]
     public string? Email { get; set; }
 
-}
-
-public class CustomerPoco
-{
-    [JsonPropertyName("id")]
-    public int Id { get; set; }
-
     [JsonPropertyName("first_name")]
+    [Required(ErrorMessage = "Firstname is required field")]
     public string? FirstName { get; set; }
 
     [JsonPropertyName("last_name")]
+    [Required(ErrorMessage = "Lastname is required field")]
     public string? LastName { get; set; }
-
-    [JsonPropertyName("email")]
-    public string? Email { get; set; }
 
     [JsonPropertyName("gender")]
     public string? Gender { get; set; }
@@ -37,5 +27,4 @@ public class CustomerPoco
 
     [JsonPropertyName("mobile_phone")]
     public string? MobilePhone { get; set; }
-
 }

@@ -17,8 +17,7 @@ builder.Services.AddCors(policy =>
     policy.AddPolicy("CorsPolicy", opt => opt
         .AllowAnyOrigin()
         .AllowAnyHeader()
-        .AllowAnyMethod()
-        .WithExposedHeaders("X-Pagination"));
+        .AllowAnyMethod());
 });
 
 builder.Services.AddDbContext<CustomerContext>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("sqlConnection")));
@@ -53,7 +52,6 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
 app.UseStaticFiles();
 
